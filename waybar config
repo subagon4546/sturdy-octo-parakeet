@@ -1,0 +1,175 @@
+{
+    "layer": "bottom",
+    "modules-left": ["group/left"],
+    "modules-center": ["group/middle"],
+    "modules-right": ["group/right"],
+    "position": "top",
+    "margin-left": 10,
+    "margin-top": 5,
+    "margin-right": 10,
+    "spacing": 10,
+    "height": 40,
+    "sway/window": {
+        "max-length": 50
+    },
+    "clock": {
+        "format-alt": "{ :%a, %d. %b  %H:%M }",
+        "format": "{:%H:%M}",
+        "tooltip-format": "{ :%a, %d. %b  %H:%M }"
+    },
+
+   "source": "/home/subagon/.config/waybar/scripts/muterclick.sh",
+
+    "pulseaudio": {
+     "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": " {icon}",
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "on-click-right": "/home/subagon/.config/waybar/scripts/muterclick.sh",
+    "format-icons": {
+        "headphone": "",
+        "default": "󰽟",
+        "hdmi": "󰓃",
+        "headset": "<span size='small' rise='1000'>󰋋</span>"
+    },
+    "states": {
+        "fucking_loud": 200,
+        "very_loud": 100,
+        "medium_loud": 70,
+        "low_loud": 40,
+        "none_loud": 0
+    }
+
+    
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "<span rise='1500'>{usage}%</span> <span size='large'></span>"
+},
+
+
+"hyprland/window": {
+    "icon": false
+},
+"hyprland/workspaces": {
+  "active-only": false,
+  "all-outputs": true,
+  "format": " {icon} "
+},
+
+"bluetooth": {
+    "format-connected": "", // device connected
+    "format-off": "<span size='large'>󰂲</span>", // off via bluetooth ctl power off
+    "format-on": "<span size='x-large'>󰂱</span>",  // on but noithing connected
+    "on-click": "blueman-manager",
+    "format-disabled": "<span size='large'>󰂲</span>"
+
+},
+
+"memory": {
+    "interval": 1,
+    "format": "{percentage}% ",
+    "states": {
+        "high": 85,
+        "danger": 95
+    }
+},
+"network": {
+    "format": " {icon}",
+    "format-icons": [
+        "<span size='x-large'>󰤭</span>",
+        "<span size='x-large'>󰤟</span>",
+        "<span size='x-large'>󰤢</span>",
+        "<span size='x-large'>󰤥</span>",
+        "<span size='x-large'>󰤨</span>"
+    ]
+},
+
+
+
+"group/bluemem": {
+    "orientation": "horizontal",
+    "modules": [
+        "bluetooth",
+        "network"
+    ]
+},
+
+"group/left": {
+    "orientation": "horizontal",
+    "modules": [
+        "hyprland/workspaces",
+        "cpu",
+        "memory"
+    ]
+
+},
+
+"group/middle": {
+    "orientation": "horizontal",
+    "modules": [
+        "clock",
+        "custom/ScrollMPRIS"
+    ]
+},
+
+"group/right": {
+    "orientation": "inherit",
+    "modules": [
+        "pulseaudio",
+        "group/bluemem",
+        "tray",
+        "group/powernshit",
+        "temperature"
+    ]
+},
+
+"custom/powerdown": {
+    "format": "<span size='x-large' foreground='#AB2929'>⏻</span>",
+    "tooltip": false,
+    "on-click": "shutdown now"
+},
+
+"custom/reboot": {
+    "format": "<span rise='500' size='x-large' foreground='#368BB5'> 󰜉 </span>",
+    "tooltip": false,
+    "on-click": "reboot"
+},
+
+"custom/quit": {
+    "format": "<span size='x-large' foreground='#36B538'>󰗼</span>",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit"
+},
+
+"group/powernshit": {
+    "orientation": "horizontal",
+    "drawer": {
+        "click-to-reveal": false,
+        "transition-duration": 500,
+        "children-class": "powerdown",
+        "transition-left-to-right": true
+    },
+    "modules": [
+        "custom/powerdown",
+        "custom/reboot",
+        "custom/quit"
+    ]
+},
+
+"custom/ScrollMPRIS": {
+    "return-type": "json",
+    "exec": "/usr/bin/ScrollMPRIS -w 18 -s 700 -b mpv,chromium.instance1887 -p --freeze",
+    "escape": true,
+    "on-click": "playerctl play-pause",
+    "on-right-click": "playerctl next"
+},
+
+"temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+    "format": "<span size='large' rise='-5000'>󰢮</span> <span rise='-3000'>{temperatureC}°C</span>"
+}
+
+
+}
