@@ -1,0 +1,78 @@
+* {
+    font-family: "NotoSansM Nerd Font Mono", monospace;
+    padding: 0;
+    margin: 0;
+}
+
+@import "/home/subagon/.cache/wal/colors-waybar.css";
+
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 0px;
+}
+#workspaces button.active {
+    color:rgb(0, 0, 0);
+    background-color: @color5;
+}
+#workspaces button:first-child.active {
+    color:rgb(0, 0, 0);
+    background-color: @color5;
+    border-radius: 100px 7px 7px 100px;
+    background-size: 10px 10px;
+}
+#workspaces button:last-child.active {
+    color:rgb(0, 0, 0);
+    background-color: @color5;
+    border-radius: 7px 100px 100px 7px;
+}
+
+#memory.high {
+    color: rgb(249, 145, 0);
+}
+#memory.danger {
+    color: rgba(255, 0, 0, 0.642)
+}
+#memory,
+#cpu,
+#clock,
+#pulseaudio,
+#powernshit,
+#custom-ScrollMPRIS,
+#tray,
+#temperature,
+#custom-waybar-scrolling-mpris,
+#bluemem,
+#workspaces {
+    border-radius: 50px;
+    background-color: rgb(25, 25, 26);
+    box-shadow: 0px 0px 2px 3px @color10;
+    padding: 0px 10px 0px 10px;
+    margin: 6px 8px 6px 8px;
+    border-bottom: 3px solid @color13;
+}
+#left {
+    background-color:rgba(0, 0, 0, 0.5);
+    padding: 2px 5px 2px 5px;
+    border-radius: 50px;
+}
+#middle {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 2px 2px 2px;
+    border-radius: 50px;
+    
+}
+#right {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px 2px 5px;
+    border-radius: 50px;
+}
+#workspaces {
+    padding: 1px 1px 1px 1px;
+}
+#workspaces button:only-child.active {
+    border-radius: 100px;
+}
